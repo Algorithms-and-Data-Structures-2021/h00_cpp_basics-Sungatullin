@@ -32,9 +32,7 @@ int **allocate_2d_array(int num_rows, int num_cols, int init_value) {
         }
         return arr;
     }
-    else{
-        return nullptr;
-    }
+    return nullptr;
 }
 
 // Задание 3
@@ -62,10 +60,11 @@ void reverse_1d_array(vector<int> &arr) {
 // Задание 5
 void reverse_1d_array(int *arr_begin, int *arr_end) {
     if ((arr_begin != nullptr) && (arr_end != nullptr)){
-        for (int i = 0; i <= (arr_end - arr_begin); i++){
-            int t = *(arr_begin + i);
-            *(arr_begin + i) = *(arr_end - i);
-            *(arr_end - i) = t;
+        int size_ = arr_end - arr_begin;
+        for (int i = 0; i <= size_ / 2; i++){
+            swap_args(arr_begin, arr_end);
+            arr_begin++;
+            arr_end--;
         }
     }
 }
@@ -81,19 +80,30 @@ int *find_max_element(int *arr, int size) {
             }
         }
         return max;
-    } else{
-        return nullptr;
     }
+    return nullptr;
 }
 
 // Задание 7
 vector<int> find_odd_numbers(vector<int> &arr) {
-    // напишите код здесь ...
-    return {};
+    vector<int> odd_numbers;
+    for (int & i : arr){
+        if (abs(i % 2) == 1){
+            odd_numbers.push_back(i);
+        }
+    }
+    return odd_numbers;
 }
 
 // Задание 8
 vector<int> find_common_elements(vector<int> &arr_a, vector<int> &arr_b) {
-    // напишите код здесь ...
-    return {};
+    vector<int> common_array;
+    for (int i : arr_a){
+        for (int j : arr_b){
+            if (j == i){
+                common_array.push_back(i);
+            }
+        }
+    }
+    return common_array;
 }
